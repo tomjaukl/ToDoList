@@ -51,18 +51,17 @@
 .taskItem {
     margin: 10px;
     display: flex;
-    min-width: 1rem;
-    max-width: 20rem;
+    max-width: 30rem;
     flex-direction: column;
     background-color: #fffbe6;
     transition: box-shadow 0.2s;
+    word-wrap: break-word;
 }
 .taskItem:hover {
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 .taskItem h3 {
-    flex: 1;
-    font-size: 1.1em;
+    font-size: 2em;
     margin: 0 0.5em;
     color: #333;
 }
@@ -71,6 +70,8 @@
     font-size: 0.95em;
     color: #666;
     margin: 0 0.5em;
+    display: inline-block;
+    
 }
 .taskItem input[type="checkbox"] {
     width: 1.2em;

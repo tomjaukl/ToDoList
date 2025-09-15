@@ -9,15 +9,14 @@
 <body>
     <div id="mainContainer">
         <div id="sideBar">
-            SIDEBAR
+            <div>
+                <img id="profilePic" src="https://placehold.co/600x400" alt="Profile Picture">
+                <h3 style="margin-right: 5rem;">User Name</h3>
+                <button id="addTaskButton" onclick="createTask()">Add Task</button>
+                <button id="removeAllTask" onclick="removeAllTasks()">Remove All Tasks</button>
+            </div>
         </div>
         <div id="mainContent">
-            <button onclick="addTask()">Add Task</button>
-            <form id="taskForm" method="dialog">
-                <label for="taskInput">New Task:</label>
-                <input type="text" id="taskInput" required>
-                <button type="submit">Add</button>
-            </form>
         </div>
     </div>
     <script src="script.js"></script>

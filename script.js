@@ -9,7 +9,7 @@ function renderTask(task, index, taskList) {
     taskItem.className = 'taskItem';
 
     const removeButton = document.createElement('button');
-    removeButton.textContent = 'Remove';
+    removeButton.textContent = 'X';
     removeButton.addEventListener('click', () => {
         let tasks = JSON.parse(localStorage.getItem('tasks') || '[]');
         tasks.splice(index, 1);
@@ -22,7 +22,7 @@ function renderTask(task, index, taskList) {
     TaskCheckbox.addEventListener('change', () => {
         let tasks = JSON.parse(localStorage.getItem('tasks') || '[]');
         tasks[index].completed = TaskCheckbox.checked;
-        
+
         localStorage.setItem('tasks', JSON.stringify(tasks));
     });
     
@@ -75,4 +75,11 @@ function addTask(taskName, taskDesc) {
     renderTask(newTask, tasks.length - 1, taskList);
 }
 
+function removeAllTasks() {
+    localStorage.removeItem('tasks');
+    const taskList = document.getElementById('mainContent');
+    while (taskList.firstChild) {
+        taskList.removeChild(taskList.firstChild);
+    }
+}
 window.addEventListener('DOMContentLoaded', loadTasks);
