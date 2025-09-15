@@ -1,0 +1,104 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+#mainContainer {
+    display: flex;
+    background-color: orange;
+}
+#sideBar{
+    width: 20%;
+    background-color: lightblue;
+}
+#mainContent{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 10;
+}
+#sideBar {
+    display: flex;
+    flex-grow: 1;
+}
+#taskForm{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+#addTaskButton{
+    background-color: lightgreen;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#removeAllTask{
+    background-color: red;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+}
+#profilePic{
+    height: 5rem;
+}
+.taskItem {
+    margin: 10px;
+    display: flex;
+    min-width: 1rem;
+    max-width: 20rem;
+    flex-direction: column;
+    background-color: #fffbe6;
+    transition: box-shadow 0.2s;
+}
+.taskItem:hover {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.taskItem h3 {
+    flex: 1;
+    font-size: 1.1em;
+    margin: 0 0.5em;
+    color: #333;
+}
+.taskItem p {
+    flex: 2;
+    font-size: 0.95em;
+    color: #666;
+    margin: 0 0.5em;
+}
+.taskItem input[type="checkbox"] {
+    width: 1.2em;
+    height: 1.2em;
+    accent-color: orange;
+    cursor: pointer;
+}
+.taskItem button {
+    background-color: #ff6666;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    padding: .5rem 1rem .5rem .5rem;
+    cursor: pointer;
+    justify-content: center;
+    transition: background 0.2s;
+    margin-left: auto;
+    width: 1rem;
+}
+.taskItem button:hover {
+    background-color: #cc0000;
+}
+
+@media (max-width: 700px) {
+    #mainContainer {
+        flex-direction: column;
+    }
+    #sideBar {
+        width: 100%;
+    }
+}
