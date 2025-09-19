@@ -5,15 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ToDoList</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300..800;1,300..800&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div id="mainContainer">
         <div id="sideBar">
             <div>
-                <img id="profilePic" src="https://placehold.co/600x400" alt="Profile Picture">
-                <h3 style="margin-right: 5rem;">User Name</h3>
-                <button id="addTaskButton" onclick="createTask()">Add Task</button>
-                <button id="removeAllTask" onclick="removeAllTasks()">Remove All Tasks</button>
+                <div>
+                    <!-- Priste dodelat: Nastaveni profilu, nejaky sidepanelshiet -->
+                    <div id="profileContainer">
+                        <img id="profilePic" src="https://placehold.co/600x400" alt="Profile Picture">
+                        <button id="settingsButton" onclick="openSettings()"></button>
+                        <div style="display: none;" id="settingsWindow">
+                            <h3>Settings</h3>
+                        </div>
+                    </div>
+                </div>
+                <h3 id="userName">User_Name</h3>
+                <div style="display: flex; flex-direction: row;">
+                <button class="addTask" id="addTaskButton" onclick="createTask()">Add Task</button>
+                <!-- removeAllTasks()-->
+                <div id="removeAllContainer">
+                <button id="removeAllTask"></button>
+                <p id="confirmationMessage">Are you sure?</p>
+                </div>
+                </div>
             </div>
         </div>
         <div id="mainContent">

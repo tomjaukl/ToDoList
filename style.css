@@ -3,22 +3,37 @@
     padding: 0;
     box-sizing: border-box;
 }
+body {
+    font-family: 'JetBrains Mono', monospace;
+}
 #mainContainer {
     display: flex;
-    background-color: orange;
+    background-color: purple;
+    margin: .3rem;
+    gap: .8rem;
 }
 #sideBar{
-    width: 20%;
+    min-width: 15rem;
     background-color: lightblue;
+    border-radius: .3rem;
 }
 #mainContent{
     display: flex;
-    flex-direction: column;
-    flex-grow: 10;
-}
-#sideBar {
-    display: flex;
+    flex-wrap: wrap;
+    gap: .8rem;
+    padding: .3rem;
     flex-grow: 1;
+}
+#settingsWindow{
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    z-index: 1000;
 }
 #taskForm{
     position: absolute;
@@ -30,40 +45,100 @@
     border: 1px solid #ccc;
     border-radius: 5px;
 }
-#addTaskButton{
+.addTask{
     background-color: lightgreen;
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
 }
+#addTopicButton{
+    background-color: orange;
+}
 #removeAllTask{
     background-color: red;
     border: none;
-    padding: 10px 20px;
+    width: 1.8rem;
+    height: 1.8rem;
+    margin-left: .3rem;
     border-radius: 5px;
     cursor: pointer;
     color: white;
+    background-image: url(img/trash.svg);
+    background-size: cover;
+    background-position: center;
 }
 #profilePic{
     height: 5rem;
 }
-.taskItem {
-    margin: 10px;
+#confirmationMessage{
+    color: red;
+    margin-left: .5rem;
+    font-size: .8rem;
+    background-color: black;
+    padding: .1rem;
+    border-radius: .3rem;
+    display: none;
+}
+#removeAllContainer{
     display: flex;
-    max-width: 30rem;
+    align-items: end;
+}
+#profileContainer{
+    display: flex;
+}
+#userName{
+    margin-right: 5rem;
+    margin-bottom: 1rem;
+}
+#settingsButton{
+    background-image: url(img/settings.svg);
+    background-size: cover;
+    width: 3rem;
+    height: 3rem;
+    margin-left: .2rem;
+    border-radius: .2rem;
+}
+#settingsButton:hover{
+    background-color: lightgray;
+    cursor: pointer;
+}
+.taskItem {
+    display: flex;
     flex-direction: column;
     background-color: #fffbe6;
     transition: box-shadow 0.2s;
     word-wrap: break-word;
+
+    border: solid 2px black;
+    ;
+
+    box-shadow: 0 1px 4px rgb(144, 143, 167);
+    flex-grow: 1;
+    border-radius: .3rem;
+}
+.TaskDesc{
+    word-break: break-all;
+    overflow: auto;
+    max-height: 5rem;
+}
+.Bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-grow: 1;
+}
+#topBar {
+    margin-bottom: 1rem;
 }
 .taskItem:hover {
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
 }
 .taskItem h3 {
     font-size: 2em;
-    margin: 0 0.5em;
+    margin: 0 0.1em;
     color: #333;
+    margin-right: 5rem;
 }
 .taskItem p {
     flex: 2;
@@ -74,22 +149,24 @@
     
 }
 .taskItem input[type="checkbox"] {
-    width: 1.2em;
-    height: 1.2em;
-    accent-color: orange;
+    width: 2em;
+    height: 2em;
+    accent-color: rgb(0, 255, 0);
     cursor: pointer;
+    margin-top: auto;
 }
+/*Delete Button*/
 .taskItem button {
     background-color: #ff6666;
     color: white;
     border: none;
     border-radius: 3px;
-    padding: .5rem 1rem .5rem .5rem;
+    height: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
     cursor: pointer;
     justify-content: center;
     transition: background 0.2s;
-    margin-left: auto;
-    width: 1rem;
 }
 .taskItem button:hover {
     background-color: #cc0000;
@@ -98,6 +175,7 @@
 @media (max-width: 700px) {
     #mainContainer {
         flex-direction: column;
+        margin: 0;
     }
     #sideBar {
         width: 100%;
