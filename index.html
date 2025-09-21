@@ -44,7 +44,7 @@
                 </div>
                 <div style="display: flex; flex-direction: column;">
                     <button class="addTask" id="addTaskButton" onclick="createTask()">Add Task</button>
-                    <button id="removeAllTask">Delete All tasks</button>
+                    <button onclick="removeAllTasks()" id="removeAllTask">Delete All tasks</button>
                 <div id="taskFormContainer">
                 <button id="hideTaskFormButton" onclick="hideTaskForm()">X</button>
                 <form id="taskForm" action="">
@@ -58,9 +58,9 @@
                 <div id="greetingContainer">
                     <h3 id="greetingMessage"></h3>
                     <div id="quoteContainer">
-                    <h4>Breaking Bad quote of the day:</h4>
-                    <p id="quote"></p>
-                    <p id="author"></p>
+                    <h4 class="breakText">Breaking Bad quote of the day:</h4>
+                    <p class="breakText" id="quote"></p>
+                    <p class="breakText" id="author"></p>
                     </div>
                 </div>
                 </div>

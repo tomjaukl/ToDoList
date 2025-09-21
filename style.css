@@ -25,7 +25,7 @@ html, body {
     flex: 1;
 }
 #sideBar{
-    min-width: 15rem + 2px;
+    max-width: 15rem;
     background-color: var(--burnt-sienna);
     border-radius: .3rem;
     border-right: solid 2px var(--delft-blue);
@@ -74,6 +74,7 @@ html, body {
     flex-grow: 1;
     background-size: cover;
     background-position: center;
+    display: none;
 }
 #closeSettings:hover{
     background-color: darkgray;
@@ -236,6 +237,8 @@ footer p {
     word-wrap: break-word;
     border: solid 2px black;
     box-shadow: 0 1px 4px rgb(144, 143, 167);
+    max-width: 100%;
+    max-height: 10rem;
     flex-grow: 1;
     border-radius: .3rem;
 }
@@ -290,6 +293,9 @@ footer p {
     transition: background 0.2s;
     align-self: flex-start;
 }
+.breakText{
+    word-break: break-word;
+}
 #profileNameContainer{
     display: flex;
 }
@@ -326,6 +332,9 @@ input[type="text"]::placeholder {
     .TaskDesc{
         overflow: none;
         max-height: none;
+    }
+    #easterEgg{
+        display: none;
     }
 }
 #mainContent {
