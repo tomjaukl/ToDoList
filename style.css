@@ -148,6 +148,7 @@ textarea{
     padding: 2px;
 }
 .addTask{
+    margin-top: 1rem;
     background-color: lightgreen;
     border: none;
     padding: 10px 20px;
@@ -216,6 +217,7 @@ textarea{
     cursor: pointer;
 }
 footer{
+    max-height: 2rem;
     flex-grow: 1;
     display: flex;
     justify-content: center;
@@ -324,7 +326,11 @@ input[type="text"]::placeholder {
         margin: 0;
     }
     #sideBar {
+        max-width: none;
         width: 100%;
+    }
+    .taskItem{
+        max-height: none;
     }
     #mainContent {
         height: auto;
@@ -334,7 +340,7 @@ input[type="text"]::placeholder {
         max-height: none;
     }
     #easterEgg{
-        display: none;
+        display: block;
     }
 }
 #mainContent {
