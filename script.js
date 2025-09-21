@@ -64,17 +64,10 @@ function renderTask(task, index, taskList) {
 
 
 function createTask() {
-    if (document.getElementById('taskForm')) return;
-    const form = document.createElement('form');
-    form.id = 'taskForm';
-    form.innerHTML = `
-        <label for="taskName">Task Name: </label>
-        <input type="text" id="taskName" required>
-        <label for="taskDesc">Description: </label>
-        <input type="text" id="taskDesc" required>
-        <button type="submit">Add Task</button>
-    `;
-    document.body.appendChild(form);
+    const taskFormContainer = document.getElementById('taskFormContainer');
+    taskFormContainer.style.display = 'block';
+
+    const form = document.getElementById('taskForm');
 
     form.onsubmit = function(event) {
         event.preventDefault();
@@ -85,8 +78,13 @@ function createTask() {
             return;
         }
         addTask(taskName, taskDesc);
-        document.body.removeChild(form);
+        taskFormContainer.style.display = 'none';
+        form.reset();
     };
+}
+function hideTaskForm(){
+    const taskFormContainer = document.getElementById('taskFormContainer');
+    taskFormContainer.style.display = 'none';
 }
 
 function addTask(taskName, taskDesc) {
@@ -107,23 +105,99 @@ function removeAllTasks() {
     }
 }
 
-function fancyAnimation() {
-    const button = document.getElementById('removeAllTask');
-    button.addEventListener('mouseover', () => {
-        button.style.backgroundColor = 'red';
-        const confirmationMessage = document.getElementById('confirmationMessage'); 
-        confirmationMessage.style.display = 'block';
-    });
-    button.addEventListener('mouseout', () => {
-        button.style.backgroundColor = '';
-        const confirmationMessage = document.getElementById('confirmationMessage'); 
-        confirmationMessage.style.display = 'none';
-    });
-}
 
 function openSettings() {
-    
+    const panel = document.getElementById('settingsContainer');
+    panel.style.display = 'block';
+    const closeBtn = document.getElementById('closeSettings');
+    closeBtn.onclick = () => {
+        panel.style.display = 'none';
+    }
 }
 
-window.addEventListener('DOMContentLoaded', loadTasks);
-window.addEventListener('DOMContentLoaded', fancyAnimation);
+// ↓ Profile picture upload logic ↓
+// Using Base64 because img is binary data and localStorage only supports strings
+const input = document.getElementById('profilePicUpload');
+const profilePic = document.getElementById('profilePic');
+
+input.addEventListener('change', () => {
+    const file = input.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = () => {
+            profilePic.src = reader.result;
+            localStorage.setItem('savedProfilePicture', reader.result);
+        }
+        reader.readAsDataURL(file);
+    }
+});
+
+function setName(name){
+    const userName = document.getElementById('userName');
+    if (name && name.trim() !== ''){
+        userName.textContent = name;
+        localStorage.setItem('savedName', name);
+    } else {
+        alert('I know you can come up with something and I mean SOMETHING');
+    }
+}
+
+function loadProfilePicture(){
+    if (localStorage.getItem('savedProfilePicture')){
+        const profilePic = document.getElementById('profilePic');
+        profilePic.src = localStorage.getItem('savedProfilePicture');
+    } else {
+        console.debug('No saved profile picture found in localStorage.');
+    }
+}
+function loadUserName(){
+    if (localStorage.getItem('savedName')){
+        const userName = document.getElementById('userName');
+        userName.textContent = localStorage.getItem('savedName');
+    }
+}
+function loadInitialData(){
+    loadTasks();
+    loadProfilePicture();
+    loadUserName();
+}
+
+// ↓ Auto-resize textarea ↓
+const taskDesc = document.getElementById('taskDesc');
+taskDesc.addEventListener('input', () => {
+    taskDesc.style.height = 'auto';
+    taskDesc.style.height = taskDesc.scrollHeight + 'px';
+});
+
+function Greeting(){
+    const name = localStorage.getItem('savedName');
+    const greeting = document.getElementById('greetingMessage');
+    const hours = new Date().getHours();
+    if (hours < 12) {
+    greeting.textContent = `Good morning, ${name}!`;
+    } else if (hours < 18) {
+    greeting.textContent = `Good afternoon, ${name}!`;
+    } else if (hours >= 18 && hours < 20) {
+    greeting.textContent = `Good evening, ${name}!`;
+    } else {
+    greeting.textContent = `Good night, ${name}!`;
+    }
+    console.log(hours);
+}
+function fetchQuote() {
+  fetch('https://api.breakingbadquotes.xyz/v1/quotes')
+    .then(response => response.json())
+    .then(data => {
+      const quote = document.getElementById('quote');
+      const author = document.getElementById('author');
+      quote.textContent = `"${data[0].quote}"`;
+      author.textContent = `— ${data[0].author}`;
+    })
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  loadInitialData();
+  Greeting();
+  fetchQuote();
+});
+

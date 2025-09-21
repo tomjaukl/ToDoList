@@ -17,19 +17,51 @@
                     <!-- Priste dodelat: Nastaveni profilu, nejaky sidepanelshiet -->
                     <div id="profileContainer">
                         <img id="profilePic" src="https://placehold.co/600x400" alt="Profile Picture">
-                        <button id="settingsButton" onclick="openSettings()"></button>
-                        <div style="display: none;" id="settingsWindow">
-                            <h3>Settings</h3>
+                        <div id="easterEgg">
                         </div>
                     </div>
                 </div>
-                <h3 id="userName">User_Name</h3>
-                <div style="display: flex; flex-direction: row;">
-                <button class="addTask" id="addTaskButton" onclick="createTask()">Add Task</button>
-                <!-- removeAllTasks()-->
-                <div id="removeAllContainer">
-                <button id="removeAllTask"></button>
-                <p id="confirmationMessage">Are you sure?</p>
+                <div style="display: flex;">
+                    <h3 id="userName">User_Name</h3>
+                    <button style="margin-left: auto;" id="settingsButton" onclick="openSettings()"></button>
+                    <div id="settingsContainer">
+                    <div id="settingsPanel">
+                        <button id="closeSettings">X</button>
+                        <h2>Settings</h2>
+                        <div style="display: flex;">
+                            <label class="uploadBtn" for="profilePicUpload">Upload your profile picture</label>
+                            <input type="file" id="profilePicUpload" accept="image/*">
+                        </div>
+                        <div id="profileNameContainer">
+                            <input type="text" id="ProfileName" placeholder="Set Your Profile Name">
+                            <button onclick="setName(ProfileName.value)">Save</button>
+                        </div>
+                        <a href="https://github.com/shevabam/breaking-bad-quotes?tab=readme-ov-file">
+                        From where I am getting quotes ;)
+                        </a>
+                    </div>
+                    </div>
+                </div>
+                <div style="display: flex; flex-direction: column;">
+                    <button class="addTask" id="addTaskButton" onclick="createTask()">Add Task</button>
+                    <button id="removeAllTask">Delete All tasks</button>
+                <div id="taskFormContainer">
+                <button id="hideTaskFormButton" onclick="hideTaskForm()">X</button>
+                <form id="taskForm" action="">
+                    <label for="taskName">Task Name:</label>
+                    <input type="text" id="taskName" required>
+                    <label for="taskDesc">Description:</label>
+                    <textarea name="taskDesc" id="taskDesc" required></textarea>
+                    <button id="taskFormAddButton" type="submit">Add</button>
+                </form>
+                </div>
+                <div id="greetingContainer">
+                    <h3 id="greetingMessage"></h3>
+                    <div id="quoteContainer">
+                    <h4>Breaking Bad quote of the day:</h4>
+                    <p id="quote"></p>
+                    <p id="author"></p>
+                    </div>
                 </div>
                 </div>
             </div>
@@ -37,6 +69,9 @@
         <div id="mainContent">
         </div>
     </div>
+    <footer>
+        <p>© 2025 Tomiik · Rohlík Enterprises™</p>
+    </footer>
     <script src="script.js"></script>
 </body>
 </html>

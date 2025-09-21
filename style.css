@@ -1,3 +1,11 @@
+:root{
+    --eggshell: #f4f1deff;
+    --burnt-sienna: #e07a5fff;
+    --delft-blue: #3d405bff;
+    --cambridge-blue: #81b29aff;
+    --sunset: #f2cc8fff;
+}
+
 *{
     margin: 0;
     padding: 0;
@@ -5,17 +13,22 @@
 }
 body {
     font-family: 'JetBrains Mono', monospace;
+    display: flex;
+    flex-direction: column;
+}
+html, body {
+    height: 100%;
 }
 #mainContainer {
     display: flex;
-    background-color: purple;
-    margin: .3rem;
-    gap: .8rem;
+    background-color: var(--cambridge-blue);
+    flex: 1;
 }
 #sideBar{
-    min-width: 15rem;
-    background-color: lightblue;
+    min-width: 15rem + 2px;
+    background-color: var(--burnt-sienna);
     border-radius: .3rem;
+    border-right: solid 2px var(--delft-blue);
 }
 #mainContent{
     display: flex;
@@ -23,27 +36,115 @@ body {
     gap: .8rem;
     padding: .3rem;
     flex-grow: 1;
+    overflow: auto;
+    height: 96vh;
 }
-#settingsWindow{
+#settingsContainer{
+    display: none;
+    
     position: absolute;
-    top: 20%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: white;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    z-index: 1000;
+    z-index: 100;
+}
+#settingsPanel  {
+    width: 20rem;
+    height: 15rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+#closeSettings{
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 30px;
+    background-color: black;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+#easterEgg{
+    background-image: url(img/monalisa.jpg);
+    flex-grow: 1;
+    background-size: cover;
+    background-position: center;
+}
+#closeSettings:hover{
+    background-color: darkgray;
+}
+#profilePicUpload {
+    display: none;
+}
+.uploadBtn{
+    display: inline-block;
+    padding: 10px 20px;
+    background: purple;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    flex-grow: 1;
+}
+.uploadBtn:hover {
+  background: darkviolet;
 }
 #taskForm{
+    padding: 30px;
+}
+#taskFormContainer{
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: white;
-    padding: 20px;
-    border: 1px solid #ccc;
     border-radius: 5px;
+    max-width: 45rem;
+    min-width: 30rem;
+
+    display: none;
+}
+#hideTaskFormButton{
+    position: absolute;
+    right: 0;
+    width: 30px;
+    background-color: black;
+    color: white;
+    border-radius: 2px;
+}
+#taskName, #taskDesc{
+    margin-bottom: .5rem;
+    width: 100%;
+}
+#taskDesc{
+    border: solid 2px black;
+}
+#taskFormAddButton{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 2rem;
+    background-color: lightgreen;
+    border-radius: 2px;
+    width: 40px;
+}
+#greetingContainer{
+    margin-top: 1rem;
+}
+#greetingContainer h4{
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    border-bottom: dashed 2px black;
+}
+textarea{
+    resize: none;
+    min-height: 4rem;
+    overflow: hidden;
+    padding: 2px;
 }
 .addTask{
     background-color: lightgreen;
@@ -58,18 +159,21 @@ body {
 #removeAllTask{
     background-color: red;
     border: none;
-    width: 1.8rem;
-    height: 1.8rem;
-    margin-left: .3rem;
+    height: 2rem;
     border-radius: 5px;
     cursor: pointer;
     color: white;
-    background-image: url(img/trash.svg);
     background-size: cover;
     background-position: center;
+    margin-top: .4rem;
+}
+#quoteContainer{
+    background-color: var(--sunset);
 }
 #profilePic{
-    height: 5rem;
+    width: 15rem;
+    height: 15rem;
+    object-fit: cover;
 }
 #confirmationMessage{
     color: red;
@@ -85,34 +189,52 @@ body {
     align-items: end;
 }
 #profileContainer{
+    background-color: yellow;
     display: flex;
 }
+#profileNameContainer{
+    display: flex;
+    background-color: green;
+}
 #userName{
-    margin-right: 5rem;
-    margin-bottom: 1rem;
+    background-color: aqua;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 #settingsButton{
     background-image: url(img/settings.svg);
     background-size: cover;
-    width: 3rem;
-    height: 3rem;
-    margin-left: .2rem;
+    width:3rem;
+    height: 2.5rem;
     border-radius: .2rem;
 }
 #settingsButton:hover{
     background-color: lightgray;
     cursor: pointer;
 }
+footer{
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--delft-blue);
+}
+footer p {
+    color: gray;
+    font-size: 0.8em;
+    background-color: aqua;
+    padding: .2rem;
+    border-radius: .3rem;
+}
 .taskItem {
     display: flex;
     flex-direction: column;
-    background-color: #fffbe6;
+    background-color: var(--eggshell);
     transition: box-shadow 0.2s;
     word-wrap: break-word;
-
     border: solid 2px black;
-    ;
-
     box-shadow: 0 1px 4px rgb(144, 143, 167);
     flex-grow: 1;
     border-radius: .3rem;
@@ -146,7 +268,6 @@ body {
     color: #666;
     margin: 0 0.5em;
     display: inline-block;
-    
 }
 .taskItem input[type="checkbox"] {
     width: 2em;
@@ -161,15 +282,34 @@ body {
     color: white;
     border: none;
     border-radius: 3px;
-    height: 100%;
+    height: 50%;
     padding-left: 1rem;
     padding-right: 1rem;
     cursor: pointer;
     justify-content: center;
     transition: background 0.2s;
+    align-self: flex-start;
+}
+#profileNameContainer{
+    display: flex;
+}
+#profileNameContainer button{
+    flex-grow: 1;
 }
 .taskItem button:hover {
     background-color: #cc0000;
+}
+input[type="text"] {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+    background-color: #fff;
+    color: #333;
+}
+input[type="text"]::placeholder {
+    color: #888;
+    opacity: 1;
 }
 
 @media (max-width: 700px) {
@@ -180,4 +320,15 @@ body {
     #sideBar {
         width: 100%;
     }
+    #mainContent {
+        height: auto;
+    }
+    .TaskDesc{
+        overflow: none;
+        max-height: none;
+    }
+}
+#mainContent {
+    scrollbar-width: thin;
+    scrollbar-color: black white;
 }
