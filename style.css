@@ -4,6 +4,18 @@
     --delft-blue: #3d405bff;
     --cambridge-blue: #81b29aff;
     --sunset: #f2cc8fff;
+
+    --tea-green: #ccd5aeff;
+    --beige: #e9edc9ff;
+    --cornsilk: #fefae0ff;
+    --papaya-whip: #faedcdff;
+    --buff: #d4a373ff;
+
+    --amber: #ffbe0bff;
+    --orange-pantone: #fb5607ff;
+    --rose: #ff006eff;
+    --blue-violet: #8338ecff;
+    --azure: #3a86ffff;
 }
 
 *{
@@ -22,6 +34,7 @@ html, body {
 #mainContainer {
     display: flex;
     background-color: var(--cambridge-blue);
+    background-image: linear-gradient(to bottom, var(--cambridge-blue), rgb(135, 172, 154));
     flex: 1;
 }
 #sideBar{
@@ -105,7 +118,7 @@ html, body {
     background-color: white;
     border-radius: 5px;
     max-width: 45rem;
-    min-width: 30rem;
+    min-width: 22rem;
 
     display: none;
 }
@@ -134,10 +147,11 @@ html, body {
     width: 40px;
 }
 #greetingContainer{
-    margin-top: 1rem;
+    background-color: var(--orange-pantone);
+    padding: .5rem 0 .5rem 0;
+    border-radius: .3rem;
 }
-#greetingContainer h4{
-    margin-top: 2rem;
+#quoteContainer h4{
     margin-bottom: 1rem;
     border-bottom: dashed 2px black;
 }
@@ -148,34 +162,48 @@ textarea{
     padding: 2px;
 }
 .addTask{
-    margin-top: 1rem;
-    background-color: lightgreen;
+    margin-top: 2rem;
+    background-color: var(--tea-green);
     border: none;
     padding: 10px 20px;
+    width: 95%;
     border-radius: 5px;
     cursor: pointer;
 }
-#addTopicButton{
-    background-color: orange;
+.flexCC{
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+}
+.addTask:hover{
+    background-color: lightgreen;
 }
 #removeAllTask{
-    background-color: red;
-    border: none;
+    background-color: var(--rose);
+    border: none;   
     height: 2rem;
     border-radius: 5px;
     cursor: pointer;
     color: white;
-    background-size: cover;
-    background-position: center;
-    margin-top: .4rem;
+    margin-top: .5rem;
+    margin-bottom: 2rem;
+    width: 95%;
+}
+#removeAllTask:hover{
+    background-color: red;
 }
 #quoteContainer{
     background-color: var(--sunset);
+    margin-top: 1rem;
+    border-radius: .3rem;
 }
 #profilePic{
     width: 15rem;
     height: 15rem;
     object-fit: cover;
+    border-right: solid 2px black;
+    border-bottom: solid 2px black;
+    border-radius: 0 .3rem .3rem 0;
 }
 #confirmationMessage{
     color: red;
@@ -198,19 +226,32 @@ textarea{
     display: flex;
     background-color: green;
 }
-#userName{
-    background-color: aqua;
+#userNamContainer{
+    background-color: var(--papaya-whip);
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+#userName{
+    background-color: var(--buff);
+    padding: 4px;
+    width: 60%;
+    border-radius: .3rem;
+    text-align: center;
 }
 #settingsButton{
     background-image: url(img/settings.svg);
     background-size: cover;
     width:3rem;
     height: 2.5rem;
-    border-radius: .2rem;
+    border: none;
+    border-left: solid 1px black;
+}
+#generateRandomTaskButton{
+    
+    color: white;
+
 }
 #settingsButton:hover{
     background-color: lightgray;
@@ -227,7 +268,7 @@ footer{
 footer p {
     color: gray;
     font-size: 0.8em;
-    background-color: aqua;
+    background-color: var(--papaya-whip);
     padding: .2rem;
     border-radius: .3rem;
 }
@@ -341,6 +382,9 @@ input[type="text"]::placeholder {
     }
     #easterEgg{
         display: block;
+    }
+    #sideBar{
+        border: none;
     }
 }
 #mainContent {

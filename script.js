@@ -82,6 +82,13 @@ function createTask() {
         form.reset();
     };
 }
+
+function GenerateRandomTask(){
+    const randomTaskName = `Random Task ${Math.floor(Math.random() * 100)}`;
+    const randomTaskDesc = `This is a description for ${randomTaskName}.`;
+    addTask(randomTaskName, randomTaskDesc);
+}
+
 function hideTaskForm(){
     const taskFormContainer = document.getElementById('taskFormContainer');
     taskFormContainer.style.display = 'none';

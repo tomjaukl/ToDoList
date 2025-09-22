@@ -22,7 +22,9 @@
                     </div>
                 </div>
                 <div style="display: flex;">
-                    <h3 id="userName">User_Name</h3>
+                    <div id="userNamContainer">
+                        <h3 id="userName">User_Name</h3>
+                    </div>
                     <button style="margin-left: auto;" id="settingsButton" onclick="openSettings()"></button>
                     <div id="settingsContainer">
                     <div id="settingsPanel">
@@ -36,6 +38,7 @@
                             <input type="text" id="ProfileName" placeholder="Set Your Profile Name">
                             <button onclick="setName(ProfileName.value)">Save</button>
                         </div>
+                        <button id="generateRandomTaskButton" onclick="GenerateRandomTask()">Generate Random Task</button>
                         <a href="https://github.com/shevabam/breaking-bad-quotes?tab=readme-ov-file">
                         From where I am getting quotes ;)
                         </a>
@@ -43,8 +46,12 @@
                     </div>
                 </div>
                 <div style="display: flex; flex-direction: column;">
-                    <button class="addTask" id="addTaskButton" onclick="createTask()">Add Task</button>
+                    <div class="flexCC" style="margin-bottom: 1rem;">
+                        <button class="addTask" id="addTaskButton" onclick="createTask()">Add Task</button>
+                    </div>
+                    <div class="flexCC">
                     <button onclick="removeAllTasks()" id="removeAllTask">Delete All tasks</button>
+                    </div>
                 <div id="taskFormContainer">
                 <button id="hideTaskFormButton" onclick="hideTaskForm()">X</button>
                 <form id="taskForm" action="">
@@ -57,11 +64,11 @@
                 </div>
                 <div id="greetingContainer">
                     <h3 id="greetingMessage"></h3>
-                    <div id="quoteContainer">
+                </div>
+                <div id="quoteContainer">
                     <h4 class="breakText">Breaking Bad quote of the day:</h4>
                     <p class="breakText" id="quote"></p>
                     <p class="breakText" id="author"></p>
-                    </div>
                 </div>
                 </div>
             </div>
